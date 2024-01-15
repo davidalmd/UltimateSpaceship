@@ -5,6 +5,7 @@ using System.Windows.Threading;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Drawing.Drawing2D;
+using System.Windows.Input;
 
 namespace UltimateSpaceship.GUI
 {
@@ -62,6 +63,8 @@ namespace UltimateSpaceship.GUI
         {
             this.gameObjects.RemoveAll(x => !x.Active);
 
+            this.ProcessControls();
+
             foreach (GameObject go in this.gameObjects)
             {
                 go.UpdateObject();
@@ -79,6 +82,14 @@ namespace UltimateSpaceship.GUI
         {
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             e.Graphics.DrawImage(this.screenBuffer, 0, 0);
+        }
+
+        private void ProcessControls()
+        {
+            if(Keyboard.IsKeyDown(Key.Left)) player.MoveLeft();
+            if(Keyboard.IsKeyDown(Key.Right)) player.MoveRight();
+            if(Keyboard.IsKeyDown(Key.Up)) player.MoveUp();
+            if(Keyboard.IsKeyDown(Key.Down)) player.MoveDown();
         }
     }
 }

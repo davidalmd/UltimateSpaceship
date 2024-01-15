@@ -13,6 +13,8 @@ namespace UltimateSpaceship.GameLogic
         {
             this.Speed = 10;
             this.Sound = Media.explosion_long;
+            this.Left = this.Bounds.Width / 2 - this.Width / 2;
+            this.Top = this.Bounds.Height - this.Height;
         }
 
         public override Bitmap GetSprite()
